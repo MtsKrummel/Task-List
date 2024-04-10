@@ -25,6 +25,8 @@ export const createTask = async (req, res) => {
         user: req.user.id
     })
     
+    newTask.save()
+
     return res.json({ message: 'Task created!' })
 }
 
