@@ -7,8 +7,13 @@ export default {
   theme: {
     extend: {},
   },
+<<<<<<< HEAD
   plugins: [
     require('tailwindcss-animated')
   ],
 }
 
+=======
+  plugins: [],
+}
+>>>>>>> d71880a227cab0031d3404d59ffacccaa6c0b469

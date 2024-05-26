@@ -1,11 +1,16 @@
 //useForm proporciona una forma eficiente y fácil de manejar la validación y el seguimiento del estado de los formularios en aplicaciones React.
 
 //register devuelve un objeto que contiene los atributos necesarios para que React Hook Form funcione correctamente con el campo de entrada, como el nombre del campo y las reglas de validación
+<<<<<<< HEAD
 import { useForm } from 'react-hook-form'
 import { useAuth } from '../context/AuthContext.jsx'
 import { useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useState } from 'react'
+=======
+import { useForm, handleSubmit } from 'react-hook-form'
+import { registerRequest } from '../api/auth.js'
+>>>>>>> d71880a227cab0031d3404d59ffacccaa6c0b469
 
 function RegisterPage(){
 
@@ -42,6 +47,7 @@ function RegisterPage(){
     })
 
     return(
+<<<<<<< HEAD
         <div className='flex h-[calc(100vh-100px)] items-center justify-center'>
             <div className='bg-zinc-800 max-w-md w-full p-10 rounded-md animate-fade-down'>
             {
@@ -59,9 +65,19 @@ function RegisterPage(){
 
             <form onSubmit={onSubmit}>
                 <input type="text" placeholder='Username'
+=======
+        <div>
+            <form onSubmit={handleSubmit(async (values)=>{
+                console.log(values)
+                const res = await registerRequest(values)
+                console.log(res)
+            })} >
+                <input type="text" 
+>>>>>>> d71880a227cab0031d3404d59ffacccaa6c0b469
                     {...register('username', {required: true})}
                     className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
                 />
+<<<<<<< HEAD
 
                 {
                     errors.username && (
@@ -98,6 +114,18 @@ function RegisterPage(){
                 }
 
                 <button type="submit" className=' bg-blue-800 rounded-md p-2 hover:bg-blue-900 transition-all'>Register</button>
+=======
+                <input type="email"
+                    {...register('email', {required: true})}
+                />
+                <input type="password"
+                    {...register('password', {required: true})}
+                />
+
+                <button type="submit">
+                    Register
+                </button>
+>>>>>>> d71880a227cab0031d3404d59ffacccaa6c0b469
             </form>
 
             <p className="flex gap-x-2 justify-between mt-10">
