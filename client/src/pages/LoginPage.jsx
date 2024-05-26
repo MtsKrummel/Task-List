@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { useAuth } from '../context/AuthContext'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useState } from 'react'
 
@@ -25,7 +25,7 @@ function LoginPage(){
         if(isAuthenticated) navigate('/')
     },[isAuthenticated])
 
-    //Animación de error
+    //Animación de error para signin
     useEffect(() => {
         if (signinErrors.length > 0) {
             const timeout = setTimeout(() => {
@@ -35,6 +35,8 @@ function LoginPage(){
             return () => clearTimeout(timeout);
         }
     }, [signinErrors]);
+
+
 
     const onSubmit = handleSubmit((data) => {
         signin(data)
@@ -97,6 +99,16 @@ function LoginPage(){
                         Login
                     </button>
                 </form>
+
+                <p className="flex gap-x-2 justify-between mt-10">
+                    ¿No tienes una cuenta? 
+                        <Link 
+                        to="/register"
+                        className="text-sky-500 "
+                        >
+                            Registrarse
+                        </Link>
+                </p>
             </div>
         </div>
     )

@@ -3,6 +3,7 @@ import { loginRequest, registerRequest } from "../API/auth";
 
 export const AuthContext = createContext()
 
+//Hook que nos trae todos los datos
 export const useAuth = () => {
     const context = useContext(AuthContext)
     if(!context){
@@ -11,6 +12,7 @@ export const useAuth = () => {
     return context
 }
 
+//Provee las funciones y estados 
 export const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null)
@@ -37,16 +39,19 @@ export const AuthProvider = ({ children }) => {
             setUser(res.data)
             setIsAuthenticated(true)
         } catch (error) {
-            console.log(error.response) // cambio 21:29 
+            console.log(error.response)
             setErrors(error.response.data)
         }
     }
 
     useEffect(() => {
         if(errors.length > 0){
-            setTimeout(()=>{
+            // setTimeout es un "timer" y es peligroso tener timers en React porque puede consumir muchos recursos, asi que vamos a guardarlo en una const timer
+            const timer = setTimeout(()=>{
                 setErrors([])
             }, 5000)
+            //Quitamos/limpiamos el timeout cuando se deje se usar(por ejemplo el usuario paso a otra página)
+            return () => clearTimeout(timer)
         }
     }, [errors])
 

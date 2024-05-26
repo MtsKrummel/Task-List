@@ -4,7 +4,7 @@
 import { useForm } from 'react-hook-form'
 import { useAuth } from '../context/AuthContext.jsx'
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useState } from 'react'
 
 function RegisterPage(){
@@ -99,6 +99,17 @@ function RegisterPage(){
 
                 <button type="submit" className=' bg-blue-800 rounded-md p-2 hover:bg-blue-900 transition-all'>Register</button>
             </form>
+
+            <p className="flex gap-x-2 justify-between mt-10">
+                ¿Ya tienes una cuenta? 
+                    <Link 
+                    to="/login"
+                    className="text-sky-500 "
+                    >
+                        Iniciar sesión
+                </Link>
+            </p>
+
             </div>
         </div>
     )

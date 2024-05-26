@@ -1,22 +1,42 @@
-import { Link } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
+import AuthenticatedView from './AuthenticatedView/AuthenticatedView'
+import UnauthenticatedView from './UnauthenticatedView/UnauthenticatedView'
 
 function NavBar(){
+
+    const { isAuthenticated } = useAuth()
+
     return(
-        <nav className="flex justify-between items-center bg-zinc-800 p-4">
-            <h1 className="text-white text-xl font-bold">Home Page</h1>
-            <div className="flex space-x-4">
-                <Link to="http://localhost:5173/register">
-                    <button className="text-white bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-md">
-                        Sign Up
-                    </button>
-                </Link>
-                <Link to="http://localhost:5173/login">
-                    <button className="text-white bg-green-500 hover:bg-green-600 px-4 py-2 rounded-md">
-                    Sign In
-                    </button>
-                </Link>
-            </div>
-    </nav>
+        <nav className="flex justify-between items-center bg-gray-800 p-4">
+            <h1 className="text-white text-xl font-bold">Taskin Project</h1>
+            {/* LA VISTA SI NO ESTA AUTENTICADO */}
+            {
+                !isAuthenticated && (
+                    <UnauthenticatedView/>
+                )
+            }
+            
+            {/* LA VISTA SI ESTA AUTENTICADO */}
+            {
+                isAuthenticated && (
+
+                    <AuthenticatedView />
+
+                    // <div>
+                    //     <div className='flex gap-x-10 justify-end'>
+                    //         <p>HOME</p>
+                    //         <p>PROYECTOS</p>
+                    //         <p>CONTACTO</p>
+                    //     </div>
+    
+                    //     <div className='flex flex-col'>
+                    //         <img className='h-8 w-8 rounded-full bg-gray-50' src='images (1).jfif'/>
+                    //     </div>
+                    // </div>
+                )
+            }
+
+        </nav>
     )
 }
 export default NavBar

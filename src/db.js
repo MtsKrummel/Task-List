@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const DB_URL = 'mongodb+srv://MtsKrummel:lautaro2004@cluster0.s8clctr.mongodb.net/'
+const DB_URL = 'mongodb://localhost/taskinproject'
 
 export const connectDB = async() => {
     try {
